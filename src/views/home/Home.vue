@@ -67,13 +67,14 @@
                 //console.log(res);
                 //this.result = res
                 this.banners = res.data.banner.list
-                //console.log(this.banners)
+                console.log(this.banners)
                 this.recommends = res.data.recommend.list
-               // console.log(this.recommends)
+                console.log(this.recommends)
               })
           },
       getHomeGoods:function (type) {
-            const page = this.goods[type].page + 1
+           const page = this.goods[type].page + 1
+        console.log(type)
         getHomeGoods(type,page)
           .then(res =>{
             console.log(res)
@@ -85,13 +86,13 @@
           * 事件监听相关的方法
           * */
       itemClick:function (index) {
-        if(index == 0){
+        if(index === 0){
           this.currentType = 'pop'
          // console.log(this.currentType);
-        }else if(index == 1){
+        }else if(index === 1){
           this.currentType = 'new'
          // console.log(this.currentType);
-        }else if(index == 2){
+        }else if(index === 2){
           this.currentType = 'sell'
          // console.log(this.currentType);
         }

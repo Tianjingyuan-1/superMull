@@ -120,8 +120,24 @@
 
       },
       mounted() {
+          //默认情况下BScroll是不可以实时的监听滚动位置
+        //probe 侦测 0&&1都是不侦测实时的位置 2：在手指滚动的过程中侦测，手指离开后的惯性过程不侦测  3：只要是滚动，都进行侦测
         this.scroll = new BScroll('.wrapper',{
+          probeType:3, //实时监听    ①
+          click:true, // 打开点击事件
+          pullUpLoad:true //允许上拉加载更多 ②
+        })
+        this.scroll.on('scroll',(position) =>{ //①
+         // console.log(position)
+        })
+        this.scroll.on('pullingUp',() =>{ //②
+          console.log('上拉加载更多');
+          // 发送网络请求，请求更多页的数据
 
+          //等数据请求完成，并且将新的数据展示出来后
+         setTimeout(() =>{
+           this.scroll.finishPullUp()
+         },2000)
         })
       }
     }
