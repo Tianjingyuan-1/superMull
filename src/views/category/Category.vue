@@ -124,7 +124,7 @@
         //probe 侦测 0&&1都是不侦测实时的位置 2：在手指滚动的过程中侦测，手指离开后的惯性过程不侦测  3：只要是滚动，都进行侦测
         this.scroll = new BScroll('.wrapper',{
           probeType:3, //实时监听    ①
-          click:true, // 打开点击事件
+          click:true, // 打开点击事件  为了控制类似于div的元素可以点击
           pullUpLoad:true //允许上拉加载更多 ②
         })
         this.scroll.on('scroll',(position) =>{ //①
