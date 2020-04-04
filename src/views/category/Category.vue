@@ -1,5 +1,5 @@
 <template>
-    <div class="wrapper">
+    <div class="wrapper" ref="wrapper">
       <ul class="content">
         <li>分类的列表1</li>
         <li>分类的列表2</li>
@@ -122,7 +122,7 @@
       mounted() {
           //默认情况下BScroll是不可以实时的监听滚动位置
         //probe 侦测 0&&1都是不侦测实时的位置 2：在手指滚动的过程中侦测，手指离开后的惯性过程不侦测  3：只要是滚动，都进行侦测
-        this.scroll = new BScroll('.wrapper',{
+        this.scroll = new BScroll(this.$refs.wrapper,{
           probeType:3, //实时监听    ①
           click:true, // 打开点击事件  为了控制类似于div的元素可以点击
           pullUpLoad:true //允许上拉加载更多 ②

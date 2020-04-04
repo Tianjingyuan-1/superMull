@@ -1,6 +1,7 @@
 <template>
-    <div class="goods-item">
-      <img :src="goodsitem.show.img" alt="">
+    <div class="goods-item" @click="itemClick">
+      <!--@load='加载后进行操作'-->
+     <img :src="goodsitem.show.img" alt="" @load="imageLoad">
       <div class="goods-info">
         <p>{{goodsitem.title}}</p>
         <span class="price">{{goodsitem.price}}</span>
@@ -21,6 +22,17 @@
               }
             }
           }
+      },
+      methods:{
+        /**
+         * 用事件总线的方法把itemImageLoad方法穿给Home页面
+         */
+        imageLoad:function () {
+          this.$bus.$emit('itemImageLoad')
+        },
+        itemClick:function () {
+          this.$router.push('/detail/' + this.goodsitem.iid)
+        }
       }
     }
 </script>
