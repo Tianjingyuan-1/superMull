@@ -140,7 +140,6 @@
            const page = this.goods[type].page + 1 // 默认设置成第一页
         getHomeGoods(type,page)
           .then(res =>{
-           // console.log(res)
             this.goods[type].list.push(...res.data.list)
             this.goods[type].page +=1
             /**
